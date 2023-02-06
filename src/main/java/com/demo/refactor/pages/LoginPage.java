@@ -12,7 +12,7 @@ public class LoginPage {
 		this.driver = driver;
 	}
 	
-	public LoginPage enterUserName(String uName) {
+	public LoginPage enterUserName(String uName) {		
 		driver.findElement(By.id("user-name")).sendKeys(uName);
 		return this;
 	}
