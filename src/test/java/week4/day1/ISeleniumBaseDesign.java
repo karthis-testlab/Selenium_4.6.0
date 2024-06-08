@@ -2,6 +2,7 @@ package week4.day1;
 
 import java.util.List;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -14,8 +15,8 @@ public interface ISeleniumBaseDesign {
 	public void quitBrowser();
 
 	public void open(String aut);
-
-	public WebElement getWebElement(String locator);
+	
+	public WebElement getWebElement(String locator) throws NoSuchElementException;
 
 	public List<WebElement> getWebElements(String locator);
 

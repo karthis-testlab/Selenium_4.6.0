@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -21,8 +22,9 @@ public class ChromeBrowser {
 	public void testChromeBrowser() {
 	    driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://www.saucedemo.com/");
-		AssertJUnit.assertTrue(false);
+		driver.get("file:///Users/karthistestlab/Downloads/radiobutton.html");
+		driver.findElements(By.xpath("//input[@id='buttons']"));
+		//AssertJUnit.assertTrue(false);
 	}
 
 	@AfterMethod

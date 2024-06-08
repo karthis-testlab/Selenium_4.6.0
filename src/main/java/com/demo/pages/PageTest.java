@@ -3,6 +3,7 @@ package com.demo.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PageTest {
@@ -11,7 +12,7 @@ public class PageTest {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.saucedemo.com/");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		Timeouts implicitlyWait = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		LoginPage loginPage = new LoginPage(driver);
 		InventoryPage invetoryPage = new InventoryPage(driver);
 		loginPage.enterUserName("standard_user");

@@ -1,19 +1,19 @@
 package week4.day1;
 
-public class LoginPage extends TestNGHooks {
+public class LoginPage extends SeleniumBase {
 	
 	public LoginPage enterUser(String uName) {		
-		type(getWebElement("id=user-name"), uName);
+		type(getWebElement(ReadProperties.getObject("LoginPage", "loginpage.username.txt")), uName);
 		return this;
 	}
 	
 	public LoginPage enterPassword(String pwd) {		
-		type(getWebElement("id=password"), pwd);
+		type(getWebElement(ReadProperties.getObject("LoginPage", "loginpage.password.txt")), pwd);
 		return this;
 	}
 	
-	public InventoryPage clickLogin() {		
-		click(getWebElement("id=login-button"));
+	public InventoryPage clickLogin() {
+		click(getWebElement(ReadProperties.getObject("LoginPage", "loginpage.login.btn")));
 		return new InventoryPage();
 	}
 	

@@ -5,6 +5,8 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseHooks {
 	
+	public String fileName;
+	
 	@BeforeMethod
 	public void beforeMethod() {
 		

@@ -2,13 +2,15 @@ package testdata;
 
 import org.testng.annotations.DataProvider;
 
+import base.BaseHooks;
 import utils.ExcelUtility;
 
-public class TestDataProvider {
+public class TestDataProvider extends BaseHooks {
 	
 	@DataProvider
 	public Object[][] getData(){
-		return ExcelUtility.getExcelData("");
+		System.out.println(fileName);
+		return null;
 		
 	}
 

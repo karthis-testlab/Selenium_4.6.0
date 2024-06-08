@@ -3,11 +3,11 @@
 <suite name="Suite">
 	<listeners>
 		<listener
-			class-name="com.testng.retry.lisenter.RetryAnnotation" />
+			class-name="com.demo.testng.listener.AnnotationTransformer"></listener>
 	</listeners>
 	<test thread-count="5" name="Test">
 		<classes>
-			<class name="com.testng.retry.lisenter.SampleTestCases" />
+			<class name="com.demo.testng.listener.TestRetry" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
