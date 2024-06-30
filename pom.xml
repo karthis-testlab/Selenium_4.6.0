@@ -3,6 +3,22 @@
 	<groupId>com.selenium.4.6.0</groupId>
 	<artifactId>Selenium_4.6.0</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<!-- Define the version of Allure you want to use via the allure.version property -->
+	<properties>
+		<allure.version>2.24.0</allure.version>
+	</properties>
+	<!-- Add allure-bom to dependency management to ensure correct versions of all the dependencies are used -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.qameta.allure</groupId>
+				<artifactId>allure-bom</artifactId>
+				<version>${allure.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
@@ -57,6 +73,11 @@
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>5.0.9</version>
+		</dependency>
+		<!-- Add necessary Allure dependencies to dependencies section -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
 		</dependency>
 	</dependencies>
 </project>
