@@ -1,5 +1,7 @@
 package week6.day2;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -8,10 +10,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -19,7 +24,7 @@ import org.testng.annotations.Test;
 public class TestRunOnTheCloud {
 	
 	public RemoteWebDriver driver = null;
-	public String sauceLabUrl = "<sauce-lab-url>";
+	public String sauceLabUrl = "https://ondemand.eu-central-1.saucelabs.com:443/wd/hub";
 
 	@BeforeMethod
 	public void setUp() throws MalformedURLException {
@@ -29,6 +34,8 @@ public class TestRunOnTheCloud {
 		browserOptions.setPlatformName("Windows 11");
 		browserOptions.setBrowserVersion("latest");
 		Map<String, Object> sauceOptions = new HashMap<String, Object>();
+		sauceOptions.put("username", "oauth-s.anusuyamathi-ef81c");
+		sauceOptions.put("accessKey", "678a5b05-bd47-4439-be70-d1e3d19f6198");
 		sauceOptions.put("build", "selenium-build-0NR6D");
 		sauceOptions.put("name", "test_saucelab" + formatter.format(date));
 		browserOptions.setCapability("sauce:options", sauceOptions);
@@ -60,7 +67,11 @@ public class TestRunOnTheCloud {
 	}
 
 	@AfterMethod
-	public void tearDown() {
+	public void tearDown(ITestResult result) throws IOException {
+		if(!result.isSuccess()) {
+			File src = driver.getScreenshotAs(OutputType.FILE);	
+			FileUtils.copyFile(src, new File("./images/"+result.getName()+".png"));
+		}
 		driver.close();
 	}
 
